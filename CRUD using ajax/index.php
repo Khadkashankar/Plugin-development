@@ -1,42 +1,57 @@
+<?php
+include('connection.php');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TODO</title>
+    <title>TO DO</title>
 </head>
 
 <body>
-    <form id="userForm">
-        <label>ADD TASK</label>
-        <input type="text" id="name" required>
+    <table>
+        <thead>
+            <tr>
+                <th>S.N</th>
+                <th>Task Name </th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id=" table">
+            <?php
+    $sql = "select * from task";
+    $result = $conn->query($sql);
+   if($result->num_rows > 0){
+    $serial=1;
+    while($row = $result->fetch_assoc()){
+        
+        ?>
+            <tr id="<?php echo $row['task_id']; ?>">
+                <td>
+                    <?php echo $serial++;?>
+                </td>
+                <td>
+                    <?php echo $row['task_name'];?>
+                </td>
+                <td>
+                    <a href="editUser.php?task_id=<?php echo $row['task_id']; ?>">Edit</a>
+                    <button type="button" onclick="submitData(<?php echo $row['task_id']; ?>);">Delete</button>
+                </td>
+            </tr>
+            <?php
+            include('script.php');
+        }
 
-        <button type="submit" id="button">SAVE</button>
-    </form>
+        }
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script>
-    $(document).ready(function() {
-        $("#userForm").submit(function(e) {
-            e.preventDefault();
-            var name = $("#name").val();
-            $.ajax({
-                url: 'insert.php',
-                method: 'POST',
-                data: {
-                    name: name,
+        ?>
 
-                },
-                success: function(data) {
 
-                    alert(data);
-                }
-            });
-        });
-
-    });
-    </script>
+        </tbody>
+    </table>
 </body>
 
 </html>
