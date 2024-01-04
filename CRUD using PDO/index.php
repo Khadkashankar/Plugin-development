@@ -15,7 +15,7 @@ include('connection.php');
     <form action="" method="POST">
         <label for="">Task Name</label><br>
         <input type="text" name="name">
-        <input type="submit" name="submit" value="submit">
+        <input type="submit" name="submit" value="SUBMIT">
     </form>
 </body>
 
@@ -23,13 +23,14 @@ include('connection.php');
 <?php
 
 
-if(isset($_REQUEST['submit'])){
-    $name = $_REQUEST['name'];
+if(isset($_POST['submit'])){
+    $name = $_POST['name'];
 
-    $sql = "insert into task ('task_name') values('$name')";
-    
-    $conn->exec($sql);
 
-    echo "data inserted";
-}
+    $sql = "insert into task (task_name) values('$name')";
+    $result = $conn->query($sql);
+    if($result){
+        header('location:view.php');
+    }
+    }
 ?>
