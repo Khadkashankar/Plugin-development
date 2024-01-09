@@ -35,7 +35,7 @@ function sm_mail_send($send_to,$subject_name,$content){
     $res = wp_mail($send_to,$subject_name,$content);
 
     if($res){
-    echo "email sent";
+    echo "<h1> email sent </h1>";
     }
 
 }
@@ -57,7 +57,7 @@ if(isset($_POST['submit'])){
     wp_insert_post($args);
 
 
-add_filter('sm_content_message','sm_content_change');
+// add_filter('sm_content_message','sm_content_change');
 add_action('sm_after_post_insert','sm_mail_send',10,3);
 
 do_action('sm_after_post_insert', $send_to,$content,$subject_name); 

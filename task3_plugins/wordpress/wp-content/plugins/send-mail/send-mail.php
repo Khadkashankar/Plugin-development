@@ -9,20 +9,25 @@
 * Text Domain: demo plugin to send mails.
 
 */
-//mail custom menu
-function email_custom_menu(){
+//hook to set menu
+add_action('admin_menu','send_mail_menu');
 
-add_menu_page('Test Email','Test Email','manage_options','test-mail','test_menu_fun');
-add_submenu_page('test-mail','Send Email','Send Email','manage_options','send-mail','send_mail_fun');
+function send_mail_menu(){
+    //menu
+ add_menu_page('Test Mail','Test Mail','manage_options','test-mail','test_mail_fn');
+ 
+
+ //submenu
+ add_submenu_page('test-mail','Send Mail','Send Mail','manage_options','send-mail','send_mail_fn');
+
 
 }
-function send_mail_fun(){
-    include('mail-form.php');
+function test_mail_fn(){
+  echo "<h2>Email Test Menu</h2>";
 }
 
-function test_menu_fun(){
-    echo "<h1> this is Email menu";
+function send_mail_fn(){
+    include 'mail-form.php';
 }
 
-
-add_action('admin_menu','email_custom_menu');
+?>
