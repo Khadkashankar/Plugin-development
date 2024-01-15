@@ -29,7 +29,7 @@ function rua_shortcode_fn(){
 <?php   
   return ob_get_clean();
 }
-add_shortcode('ura-shortcode','ura_shortcode_fn');
+add_shortcode('ura-shortcode','rua_shortcode_fn');
 
 function rua_custom_register_user() {
    if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])){
@@ -45,7 +45,7 @@ function rua_custom_register_user() {
     $user_id = wp_insert_user($data);
 
     if (!is_wp_error($user_id)) {
-echo $name." user registered successfully";   
+echo $name." registered successfully";   
  } 
 }
 wp_die();
