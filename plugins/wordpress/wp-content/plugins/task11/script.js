@@ -9,7 +9,7 @@ jQuery(document).ready(function($) {
             type: 'POST',
             url: ajaxUrl,
             data: {
-                action: 'custom_register_user',
+                action: 'rua_custom_register_user',
                 username: name,
                 email: email,
                 password:password

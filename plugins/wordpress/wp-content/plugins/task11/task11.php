@@ -12,7 +12,7 @@ if(!defined('ABSPATH')){
     header("Location: /wordpress");
     die();
 }
-function ura_shortcode_fn(){
+function rua_shortcode_fn(){
     ob_start();
 
     ?>
@@ -31,7 +31,7 @@ function ura_shortcode_fn(){
 }
 add_shortcode('ura-shortcode','ura_shortcode_fn');
 
-function custom_register_user() {
+function rua_custom_register_user() {
    if(isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password'])){
     $name = $_POST['username'];
     $email = $_POST['email'];
@@ -51,7 +51,7 @@ echo $name." user registered successfully";
 wp_die();
 }
 
-add_action('wp_ajax_custom_register_user', 'custom_register_user');
+add_action('wp_ajax_rua_custom_register_user', 'rua_custom_register_user');
 
 function rua_my_custom_scripts(){
     $path = plugins_url('script.js',__FILE__);
@@ -60,7 +60,6 @@ function rua_my_custom_scripts(){
 
     wp_enqueue_script('my-custom-js',$path,$depend,$version,true);
     wp_add_inline_script('my-custom-js', 'var ajaxUrl = "'.admin_url('admin-ajax.php').'";','before' );
-    // wp_localize_script('my-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts','rua_my_custom_scripts');
 
