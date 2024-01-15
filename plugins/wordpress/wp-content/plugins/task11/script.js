@@ -7,7 +7,7 @@ jQuery(document).ready(function($) {
         var password = $('#password').val();
         $.ajax({
             type: 'POST',
-            url: ajax_object.ajax_url,
+            url: ajaxUrl,
             data: {
                 action: 'custom_register_user',
                 username: name,
@@ -17,6 +17,7 @@ jQuery(document).ready(function($) {
             success: function(response) {
                 alert(response);
             },
+           
         });
     });
 });

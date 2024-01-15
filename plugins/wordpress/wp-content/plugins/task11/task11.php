@@ -45,8 +45,10 @@ function custom_register_user() {
     $user_id = wp_insert_user($data);
 
     if (!is_wp_error($user_id)) {
-echo $name." user registered successfully";    } 
+echo $name." user registered successfully";   
+ } 
 }
+wp_die();
 }
 
 add_action('wp_ajax_custom_register_user', 'custom_register_user');
@@ -57,7 +59,8 @@ function rua_my_custom_scripts(){
     $version = filemtime(plugin_dir_path(__FILE__).'script.js');
 
     wp_enqueue_script('my-custom-js',$path,$depend,$version,true);
-    wp_localize_script('my-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
+    wp_add_inline_script('my-custom-js', 'var ajaxUrl = "'.admin_url('admin-ajax.php').'";','before' );
+    // wp_localize_script('my-custom-js', 'ajax_object', array('ajax_url' => admin_url('admin-ajax.php')));
 }
 add_action('wp_enqueue_scripts','rua_my_custom_scripts');
 
