@@ -8,7 +8,7 @@
 * Description: a plugin for custom taxonomy
 
 */
-function custom_taxonomy_fruits() {
+function ct_custom_taxonomy_fruits() {
     $labels = array(
         'name'                       => __('Fruits'),
         'singular_name'              => __('Fruit'),
@@ -18,7 +18,8 @@ function custom_taxonomy_fruits() {
         'labels'                     => $labels,
         'hierarchical'               => true,
         'public'                     => true,
+        'show_in_rest'               => true,
            );
     register_taxonomy( 'fruits', array( 'post' ), $args );
 }
-add_action( 'init', 'custom_taxonomy_fruits');
+add_action( 'init', 'ct_custom_taxonomy_fruits');
