@@ -22,7 +22,7 @@ if (is_user_logged_in()) {
         $users = get_users($args);
 
         if (empty($users)) {
-            echo '<div >' . esc_html_e('No review found.', 'user-review') . '</div>';
+            echo '<div class="alert alert-info" role="alert">' . esc_html__('No review found.', 'user-review') . '</div>';
         } else {
             foreach ($users as $user) {
                 $user_email = esc_html($user->user_email);
@@ -30,14 +30,15 @@ if (is_user_logged_in()) {
                 $user_registered = esc_html($user->user_registered);
                 $review = esc_html(get_user_meta($user->ID, 'review', true));
                 $rating = esc_html(get_user_meta($user->ID, 'rating', true));
-
-                echo '<div class="container card mb-3" data-rating="' . $rating . '">';
+                echo '<div class="reviews-container">';
+                echo '<div "class="card mb-3" data-rating="' . $rating . '">';
                 echo '<div class="card-body">';
                 echo '<h5 class="card-title">' . $user_nicename . '</h5>';
-                echo '<p class="card-text"><strong>' . esc_html_e('Email:', 'user-review') . '</strong> ' . $user_email . '</p>';
-                echo '<p class="card-text"><strong>' . esc_html_e('Review:', 'user-review') . '</strong> ' . $review . '</p>';
-                echo '<p class="card-text" title="' . esc_html_e('Rating', 'user-review') . '"><strong>' . esc_html_e('Rating:', 'user-review') . '</strong> ' . $rating . '</p>';
-                echo '<p class="card-text" title="' . esc_html_e('Registered Date', 'user-review') . '"><strong>' . esc_html_e('Registered Date:', 'user-reveiw') . '</strong> ' . $user_registered . '</p>';
+                echo '<p class="card-text"><strong>' . esc_html__('Email:', 'user-review') . '</strong> ' . $user_email . '</p>';
+                echo '<p class="card-text"><strong>' . esc_html__('Review:', 'user-review') . '</strong> ' . $review . '</p>';
+                echo '<p class="card-text" title="' . esc_html__('Rating', 'user-review') . '"><strong>' . esc_html__('Rating:', 'user-review') . '</strong> ' . $rating . '</p>';
+                echo '<p class="card-text" title="' . esc_html__('Registered Date', 'user-review') . '"><strong>' . esc_html__('Registered Date:', 'user-reveiw') . '</strong> ' . $user_registered . '</p>';
+                echo '</div>';
                 echo '</div>';
                 echo '</div>';
             }
