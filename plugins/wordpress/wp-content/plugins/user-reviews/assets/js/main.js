@@ -5,7 +5,6 @@ jQuery(document).ready(function ($) {
 
 
         $(".error-message").text('');
-        $("#registration-message").text('');
 
         var email = $("#email").val();
         var pass = $("#pass").val();

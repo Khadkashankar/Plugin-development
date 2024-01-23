@@ -83,25 +83,25 @@ class UserRegister
                 <div class="row">
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="rating_num"><?php echo _e('Search by Rating:', 'user-review'); ?></label>
+                            <label for="rating_num"><?php esc_html_e('Search by Rating:', 'user-review'); ?></label>
                             <select class="form-control" id="rating_num">
-                                <option disabled selected><?php echo _e('All Rating:', 'user-review'); ?></option>
-                                <option value="1"><?php echo _e('1', 'user-review') ?></option>
-                                <option value="2"><?php echo _e('2', 'user-review') ?></option>
-                                <option value="3"><?php echo _e('3', 'user-review') ?></option>
-                                <option value="4"><?php echo _e('4', 'user-review') ?></option>
-                                <option value="5"><?php echo _e('5', 'user-review') ?></option>
+                                <option disabled selected><?php esc_html_e('All Rating:', 'user-review'); ?></option>
+                                <option value="1"><?php esc_html_e('1', 'user-review') ?></option>
+                                <option value="2"><?php esc_html_e('2', 'user-review') ?></option>
+                                <option value="3"><?php esc_html_e('3', 'user-review') ?></option>
+                                <option value="4"><?php esc_html_e('4', 'user-review') ?></option>
+                                <option value="5"><?php esc_html_e('5', 'user-review') ?></option>
                             </select>
                         </div>
                     </div>
 
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label for="registered_date"><?php echo _e('Sort by Date', 'user-review'); ?></label>
+                            <label for="registered_date"><?php esc_html_e('Sort by Date', 'user-review'); ?></label>
                             <select class="form-control" id="registered_date">
-                                <option value="" disabled selected><?php echo _e('Date Order:', 'user-review'); ?></option>
-                                <option value="ASC"><?php echo _e('Ascending', 'user-review'); ?></option>
-                                <option value="DESC"><?php echo _e('Descending', 'user-review'); ?></option>
+                                <option value="" disabled selected><?php esc_html_e('Date Order:', 'user-review'); ?></option>
+                                <option value="ASC"><?php esc_html_e('Ascending', 'user-review'); ?></option>
+                                <option value="DESC"><?php esc_html_e('Descending', 'user-review'); ?></option>
                             </select>
                         </div>
                     </div>
