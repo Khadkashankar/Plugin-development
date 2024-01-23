@@ -10,7 +10,7 @@ if (is_user_logged_in()) {
 
         //get the reviews according to rating and date 
         $args = array(
-            'role__not_in' => array('administrator'),
+            'role' => array('subscriber'),
             'meta_key' => 'rating',
             'meta_value' => $user_rating,
             'orderby' => 'user_registered',
@@ -19,7 +19,9 @@ if (is_user_logged_in()) {
             'offset' => $offset,
         );
 
+
         $users = get_users($args);
+        $user = get_user_meta($user->ID);
 
         if (empty($users)) {
             echo '<div class="alert alert-info" role="alert">' . esc_html__('No review found.', 'user-review') . '</div>';
@@ -44,7 +46,14 @@ if (is_user_logged_in()) {
         }
 
         // Output pagination
-        $total_reviews = count_users()['total_users'];
+
+        $user_query = new WP_User_Query(array(
+            'role' => array('subscriber'),
+            'meta_key' => 'review'
+        ));
+        $total_reviews = (int) $user_query->get_total();
+
+        // $total_reviews = count_users()['total_users'];
         $total_pages = ceil($total_reviews / $reviews_per_page);
 
         echo '<div class="pagination-container">';
