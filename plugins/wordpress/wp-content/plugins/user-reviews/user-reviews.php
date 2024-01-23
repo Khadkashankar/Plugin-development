@@ -11,8 +11,7 @@
  */
 
 if (!defined('ABSPATH')) {
-    header("Location: /");
-    die();
+    exit; // Exit if accessed directly.
 }
 
 class UserRegister
