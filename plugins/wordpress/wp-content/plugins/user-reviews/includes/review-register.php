@@ -14,9 +14,9 @@ if (
     $review = sanitize_textarea_field($_POST['review']);
     $rating = $_POST['rating'];
 
-    // if (empty($email) || empty($pass) || empty($firstname) || empty($lastname) || empty($review)) {
-    //     wp_send_json_error('plz valid input data');
-    // }
+    if (empty($email) || empty($pass) || empty($firstname) || empty($lastname) || empty($review)) {
+        wp_send_json_error('plz valid input data');
+    }
 
     //filter to extract username from email
     $username = apply_filters('urwr_extract_username_email', $email);
